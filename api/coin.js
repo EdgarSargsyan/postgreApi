@@ -35,7 +35,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BTC/USD'
 // //         const tickers = {}
@@ -80,7 +80,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LTC/USD'
 // //         const tickers = {}
@@ -125,7 +125,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LTC/BTC'
 // //         const tickers = {}
@@ -168,7 +168,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ETH/USD'
 //         const tickers = {}
@@ -214,7 +214,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETH/BTC'
 // //         const tickers = {}
@@ -253,129 +253,129 @@
 // //     ETC/BTC    //
 // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETC/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into etc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETC/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into etc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 
-// // ///////////////////////
-// // //     ETC/USD    //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //     ETC/USD    //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETC/USD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into etc_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // ///////////////////////
-// // //     LTC/EUR    //
-// // ///////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETC/USD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into etc_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // ///////////////////////
+// // // //     LTC/EUR    //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'LTC/EUR'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into ltc_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'LTC/EUR'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into ltc_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 
 // // ///////////////////////
 // // //     RRT/USD   //
@@ -386,7 +386,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'RRT/USD'
 // //         const tickers = {}
@@ -429,7 +429,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'RRT/BTC'
 // //         const tickers = {}
@@ -472,7 +472,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZEC/USD'
 // //         const tickers = {}
@@ -514,7 +514,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ZEC/BTC'
 //         const tickers = {}
@@ -548,91 +548,91 @@
 //         }
 //     }, 5000);
 // }
-// // ///////////////////////
-// // //    ETC/EUR      //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //    ETC/EUR      //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETC/EUR'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETC/EUR'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
 
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into etc_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // ///////////////////////
-// // //       XMR/USD    //
-// // ///////////////////////
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into etc_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // ///////////////////////
+// // // //       XMR/USD    //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'XMR/USD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into xmr_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'XMR/USD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into xmr_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 
 // // ///////////////////////
 // // //       XMR/BTC    //
@@ -643,7 +643,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XMR/BTC'
 // //         const tickers = {}
@@ -685,7 +685,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DSH/USD'
 // //         const tickers = {}
@@ -728,7 +728,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DSH/BTC'
 // //         const tickers = {}
@@ -771,7 +771,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCC/BTC'
 // //         const tickers = {}
@@ -817,7 +817,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCU/BTC'
 // //         const tickers = {}
@@ -858,7 +858,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCC/USD'
 // //         const tickers = {}
@@ -901,7 +901,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCU/USD'
 // //         const tickers = {}
@@ -946,7 +946,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'BTC/EUR'
 //         const tickers = {}
@@ -983,15 +983,15 @@
 
 
 
-// // ///////////////////////
-// // //      XRP/USD     //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //      XRP/USD     //
+// // // ///////////////////////
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'XRP/USD'
 //         const tickers = {}
@@ -1024,15 +1024,15 @@
 //         }
 //     }, 5000);
 // }
-// // ///////////////////////
-// // //      XRP/EUR     //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //      XRP/EUR     //
+// // // ///////////////////////
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'XRP/EUR'
 //         const tickers = {}
@@ -1066,15 +1066,15 @@
 //     }, 5000);
 // }
 
-// // ///////////////////////
-// // //      XRP/BTC     //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //      XRP/BTC     //
+// // // ///////////////////////
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'XRP/BTC'
 //         const tickers = {}
@@ -1116,7 +1116,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'IOT/USD'
 // //         const tickers = {}
@@ -1160,7 +1160,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'IOT/USD'
 // //         const tickers = {}
@@ -1208,7 +1208,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'IOT/BTC'
 // //         const tickers = {}
@@ -1250,7 +1250,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'IOT/ETH'
 // //         const tickers = {}
@@ -1294,7 +1294,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EOS/USD'
 // //         const tickers = {}
@@ -1336,7 +1336,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EOS/BTC'
 // //         const tickers = {}
@@ -1372,85 +1372,85 @@
 // // /////////////////////
 // // //     EOS/ETH  //
 // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'EOS/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eos_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // /////////////////////
-// // //     REP/EUR  //
-// // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'REP/EUR'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into rep_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'EOS/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eos_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // /////////////////////
+// // // //     REP/EUR  //
+// // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'REP/EUR'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into rep_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // /////////////////////
 // // //     EOS/ETH  //
 // // /////////////////////
@@ -1459,7 +1459,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EOS/ETH'
 // //         const tickers = {}
@@ -1500,7 +1500,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SAN/USD'
 // //         const tickers = {}
@@ -1542,7 +1542,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SAN/BTC'
 // //         const tickers = {}
@@ -1583,7 +1583,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SAN/ETH'
 // //         const tickers = {}
@@ -1625,7 +1625,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMG/USD'
 // //         const tickers = {}
@@ -1667,7 +1667,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMG/BTC'
 // //         const tickers = {}
@@ -1708,7 +1708,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMG/ETH'
 // //         const tickers = {}
@@ -1744,56 +1744,14 @@
 // // // /////////////////////
 // // // //    BCH/USD     //
 // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'BCH/USD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into bch_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // /////////////////////
-// // //    BCH/BTC     //
-// // /////////////////////
 // // {
 // //     let dat = {};
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
-// //         const symbol = 'BCH/BTC'
+// //         const symbol = 'BCH/USD'
 // //         const tickers = {}
 // //         await Promise.all(exchanges.map(exchangeId =>
 // //             new Promise(async (resolve, reject) => {
@@ -1805,6 +1763,7 @@
 // //                         const ticker = tickers[exchangeId];
 // //                         dat = ticker;
 // //                         dat.ex_name = exchangeId;
+
 // //                     })
 // //                 }
 // //             })
@@ -1816,7 +1775,7 @@
 // //             let values = [
 // //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
 // //             ];
-// //             let sql = format('insert into bch_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //             let sql = format('insert into bch_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
 // //                 'ex_name, last, average, date )' + 'values %L', values);
 // //             db.query(sql, function (err, result) {
 // //                 if (err) throw err;
@@ -1825,6 +1784,47 @@
 // //     }, 5000);
 // // }
 // // /////////////////////
+// // //    BCH/BTC     //
+// // /////////////////////
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BCH/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bch_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
+// // /////////////////////
 // // //    BCH/ETH     //
 // // /////////////////////
 // // {
@@ -1832,7 +1832,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCH/ETH'
 // //         const tickers = {}
@@ -1874,7 +1874,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NEO/USD'
 // //         const tickers = {}
@@ -1916,7 +1916,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NEO/BTC'
 // //         const tickers = {}
@@ -1958,7 +1958,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NEO/ETH'
 // //         const tickers = {}
@@ -2001,7 +2001,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETP/USD'
 // //         const tickers = {}
@@ -2043,7 +2043,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETP/BTC'
 // //         const tickers = {}
@@ -2085,7 +2085,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETP/ETH'
 // //         const tickers = {}
@@ -2129,7 +2129,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QTM/USD'
 // //         const tickers = {}
@@ -2172,7 +2172,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QTM/BTC'
 // //         const tickers = {}
@@ -2216,7 +2216,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QTM/ETH'
 // //         const tickers = {}
@@ -2260,7 +2260,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BT1/USD'
 // //         const tickers = {}
@@ -2301,7 +2301,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BT2/USD'
 // //         const tickers = {}
@@ -2343,7 +2343,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BT1/BTC'
 // //         const tickers = {}
@@ -2384,7 +2384,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BT2/BTC'
 // //         const tickers = {}
@@ -2425,7 +2425,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'AVT/USD'
 // //         const tickers = {}
@@ -2466,7 +2466,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'AVT/BTC'
 // //         const tickers = {}
@@ -2507,7 +2507,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'AVT/ETH'
 // //         const tickers = {}
@@ -2548,7 +2548,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EDO/USD'
 // //         const tickers = {}
@@ -2589,7 +2589,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EDO/BTC'
 // //         const tickers = {}
@@ -2631,7 +2631,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EDO/ETH'
 // //         const tickers = {}
@@ -2668,86 +2668,86 @@
 // // /////////////////
 // // //   BTG/USD //
 // // /////////////////
-// // {
-// //     let dat = {};
-// //     "use strict";
-// //     (async () => {
-// //         const exchanges = [
-// //             'kraken'
-// //         ]
-// //         const symbol = 'BTG/USD'
-// //         const tickers = {}
-// //         await Promise.all(exchanges.map(exchangeId =>
-// //             new Promise(async (resolve, reject) => {
-// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-// //                 while (true) {
-// //                     const ticker = await exchange.fetchTicker(symbol)
-// //                     tickers[exchangeId] = ticker;
-// //                     Object.keys(tickers).map(exchangeId => {
-// //                         const ticker = tickers[exchangeId];
-// //                         dat = ticker;
-// //                         dat.ex_name = exchangeId;
-// //                     })
-// //                 }
-// //             })
-// //         ))
-// //     })();
-// //     setInterval(function () {
-// //         if (dat.symbol !== undefined) {
-// //             let timeUnix = unixTime(dat.datetime);
-// //             let values = [
-// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-// //             ];
-// //             let sql = format('insert into btg_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-// //                 'ex_name, last, average, date )' + 'values %L', values);
-// //             db.query(sql, function (err, result) {
-// //                 if (err) throw err;
-// //             });
-// //         }
-// //     }, 5000);
-// // }
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BTG/USD'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into btg_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 
 // // /////////////////
 // // //   BTG/BTC //
 // // /////////////////
-// // {
-// //     let dat = {};
-// //     "use strict";
-// //     (async () => {
-// //         const exchanges = [
-// //             'kraken'
-// //         ]
-// //         const symbol = 'BTG/BTC'
-// //         const tickers = {}
-// //         await Promise.all(exchanges.map(exchangeId =>
-// //             new Promise(async (resolve, reject) => {
-// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-// //                 while (true) {
-// //                     const ticker = await exchange.fetchTicker(symbol)
-// //                     tickers[exchangeId] = ticker;
-// //                     Object.keys(tickers).map(exchangeId => {
-// //                         const ticker = tickers[exchangeId];
-// //                         dat = ticker;
-// //                         dat.ex_name = exchangeId;
-// //                     })
-// //                 }
-// //             })
-// //         ))
-// //     })();
-// //     setInterval(function () {
-// //         if (dat.symbol !== undefined) {
-// //             let timeUnix = unixTime(dat.datetime);
-// //             let values = [
-// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-// //             ];
-// //             let sql = format('insert into btg_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-// //                 'ex_name, last, average, date )' + 'values %L', values);
-// //             db.query(sql, function (err, result) {
-// //                 if (err) throw err;
-// //             });
-// //         }
-// //     }, 5000);
-// // }
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BTG/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into btg_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 
 // // /////////////////
 // // //   DAT/USD' //
@@ -2757,7 +2757,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DAT/USD'
 // //         const tickers = {}
@@ -2799,7 +2799,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DAT/BTC'
 // //         const tickers = {}
@@ -2840,7 +2840,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DAT/ETH'
 // //         const tickers = {}
@@ -2881,7 +2881,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QSH/USD'
 // //         const tickers = {}
@@ -2923,7 +2923,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QSH/BTC'
 // //         const tickers = {}
@@ -2966,7 +2966,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'QSH/ETH'
 // //         const tickers = {}
@@ -3009,7 +3009,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'YYW/USD'
 // //         const tickers = {}
@@ -3051,7 +3051,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'YYW/BTC'
 // //         const tickers = {}
@@ -3092,7 +3092,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'YYW/ETC'
 // //         const tickers = {}
@@ -3133,7 +3133,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GNT/USD'
 // //         const tickers = {}
@@ -3174,7 +3174,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GNT/BTC'
 // //         const tickers = {}
@@ -3216,7 +3216,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GNT/ETH'
 // //         const tickers = {}
@@ -3257,7 +3257,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SNT/USD'
 // //         const tickers = {}
@@ -3298,7 +3298,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SNT/BTC'
 // //         const tickers = {}
@@ -3342,7 +3342,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SNT/ETH'
 // //         const tickers = {}
@@ -3384,7 +3384,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'IOT/EUR'
 // //         const tickers = {}
@@ -3427,7 +3427,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'BTC/USD'
 //         const tickers = {}
@@ -3461,144 +3461,144 @@
 //     }, 5000);
 // }
 
-// // // ///////////////////////
-// // // //     XLM/BTC      //
-// // // ///////////////////////
+// // // // ///////////////////////
+// // // // //     XLM/BTC      //
+// // // // ///////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'XLM/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into xlm_btc' + '(symbol, high, low, bid, ask, base_volume,  time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+
+// // // // ///////////////////////
+// // // // //     USDT/USD      //
+// // // // ///////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'USDT/USD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into usdt_usd' + '(symbol, high, low, bid, ask, base_volume,  time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+
+// // // // ///////////////////////
+// // // // //     LTC/USD       //
+// // // // ///////////////////////
+
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'LTC/USD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into ltc_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+
+// // // // ///////////////////////
+// // // // //     ETH/EUR       //
+// // // // ///////////////////////
+
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'XLM/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into xlm_btc' + '(symbol, high, low, bid, ask, base_volume,  time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-
-// // // ///////////////////////
-// // // //     USDT/USD      //
-// // // ///////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'USDT/USD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into usdt_usd' + '(symbol, high, low, bid, ask, base_volume,  time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-
-// // // ///////////////////////
-// // // //     LTC/USD       //
-// // // ///////////////////////
-
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'LTC/USD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into ltc_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-
-// // // ///////////////////////
-// // // //     ETH/EUR       //
-// // // ///////////////////////
-
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ETH/EUR'
 //         const tickers = {}
@@ -3633,59 +3633,59 @@
 //     }, 5000);
 // }
 
-// // // ///////////////////////
-// // // //     LTC/BTC      //
-// // // ///////////////////////
+// // // // ///////////////////////
+// // // // //     LTC/BTC      //
+// // // // ///////////////////////
+
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'LTC/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into ltc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+
+// // // // ///////////////////////
+// // // // //     BCH/EUR      //
+// // // // ///////////////////////
 
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'LTC/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into ltc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-
-// // // ///////////////////////
-// // // //     BCH/EUR      //
-// // // ///////////////////////
-
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'BCH/EUR'
 //         const tickers = {}
@@ -3721,16 +3721,16 @@
 //     }, 5000);
 // }
 
-// // // ///////////////////////
-// // // //     ETH/BTC     //
-// // // ///////////////////////
+// // // // ///////////////////////
+// // // // //     ETH/BTC     //
+// // // // ///////////////////////
 
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ETH/BTC'
 //         const tickers = {}
@@ -3774,7 +3774,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETC/BTC'
 // //         const tickers = {}
@@ -3816,7 +3816,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LSK/BTC'
 // //         const tickers = {}
@@ -3858,7 +3858,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ETC/USDT'
 // //         const tickers = {}
@@ -3900,7 +3900,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'FCT/BTC'
 // //         const tickers = {}
@@ -3943,7 +3943,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ZEC/USD'
 //         const tickers = {}
@@ -3976,48 +3976,48 @@
 //         }
 //     }, 5000);
 // }
-// // // ///////////////////////
-// // // //    ETH/ETC       //
-// // // ///////////////////////
+// // // // ///////////////////////
+// // // // //    ETH/ETC       //
+// // // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETH/ETC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eth_etc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETH/ETC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eth_etc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // ///////////////////////
 // // // //    ZEC/BTC       //
 // // // ///////////////////////
@@ -4027,7 +4027,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZEC/BTC'
 // //         const tickers = {}
@@ -4065,55 +4065,55 @@
 // // //    EOS/BTC       //
 // // ///////////////////////
 
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'EOS/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eos_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // ///////////////////////
+// // // //    DASH/EUR       //
+// // // ///////////////////////
+
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'EOS/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eos_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // ///////////////////////
-// // //    DASH/EUR       //
-// // ///////////////////////
-
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'DASH/EUR'
 //         const tickers = {}
@@ -4147,92 +4147,92 @@
 //         }
 //     }, 5000);
 // }
-// // ///////////////////////
-// // //    ETH/EOS       //
-// // ///////////////////////
+// // // ///////////////////////
+// // // //    ETH/EOS       //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETH/EOS'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETH/EOS'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
 
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eth_eos' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // ///////////////////////
-// // //    XMR/EUR       //
-// // ///////////////////////
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eth_eos' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // ///////////////////////
+// // // //    XMR/EUR       //
+// // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'XMR/EUR'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'XMR/EUR'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
 
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into xmr_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into xmr_eur' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // ///////////////////////
 // // //    ZEC/EUR       //
 // // ///////////////////////
@@ -4242,7 +4242,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ZEC/EUR'
 //         const tickers = {}
@@ -4276,6 +4276,135 @@
 //         }
 //     }, 5000);
 // }
+// // ///////////////////////
+// // //    BCH/GBP       //
+// // ///////////////////////
+
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BCH/GBP'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bch_gbp' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
+// // ///////////////////////
+// // //    GHS/BTC       //
+// // ///////////////////////
+
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'GHS/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into ghs_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
+// // ///////////////////////
+// // //    DASH/GBP       //
+// // ///////////////////////
+
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'DASH/GBP'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into dash_gbp' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // // // ///////////////////////
 // // // //    STRAT/BTC       //
 // // // ///////////////////////
@@ -4285,7 +4414,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'STRAT/BTC'
 // //         const tickers = {}
@@ -4328,7 +4457,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XMR/USDT'
 // //         const tickers = {}
@@ -4370,7 +4499,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCN/BTC'
 // //         const tickers = {}
@@ -4407,128 +4536,128 @@
 // // // //       REP/BTC   //
 // // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'REP/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into rep_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // ///////////////////////
-// // // //       ICN/BTC   //
-// // // ///////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'REP/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into rep_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // ///////////////////////
+// // // // //       ICN/BTC   //
+// // // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ICN/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into icn_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // ///////////////////////
-// // // //       ICN/ETH   //
-// // // ///////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ICN/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into icn_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // ///////////////////////
+// // // // //       ICN/ETH   //
+// // // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ICN/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into icn_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ICN/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into icn_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // ///////////////////////
 // // // //       BURST/BTC   //
 // // // ///////////////////////
@@ -4538,7 +4667,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BURST/BTC'
 // //         const tickers = {}
@@ -4580,7 +4709,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ARDR/BTC'
 // //         const tickers = {}
@@ -4622,7 +4751,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'VTC/BTC'
 // //         const tickers = {}
@@ -4659,44 +4788,44 @@
 // // //       XMR/BTC    //
 // // ///////////////////////
 
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'XMR/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into xmr_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'XMR/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into xmr_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // ///////////////////////
 // // // //       DGB/BTC   //
 // // // ///////////////////////
@@ -4706,7 +4835,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DGB/BTC'
 // //         const tickers = {}
@@ -4748,7 +4877,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BTS/BTC'
 // //         const tickers = {}
@@ -4790,7 +4919,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'DASH/BTC'
 //         const tickers = {}
@@ -4832,7 +4961,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NXT/USDT'
 // //         const tickers = {}
@@ -4875,7 +5004,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XRP/USDT'
 // //         const tickers = {}
@@ -4917,7 +5046,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XRP/BTC'
 // //         const tickers = {}
@@ -4961,7 +5090,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMG/BTC'
 // //         const tickers = {}
@@ -5002,7 +5131,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMG/ETH'
 // //         const tickers = {}
@@ -5038,44 +5167,44 @@
 // // // /////////////////////
 // // // //    ETC/ETH     //
 // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETC/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into etc_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETC/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into etc_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // /////////////////////
 // // // //    PPC/BTC     //
 // // // /////////////////////
@@ -5084,7 +5213,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'PPC/BTC'
 // //         const tickers = {}
@@ -5125,7 +5254,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SBD/BTC'
 // //         const tickers = {}
@@ -5161,85 +5290,85 @@
 // // // /////////////////////
 // // // //    REP/ETH     //
 // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'REP/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into rep_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    MLN/BTC     //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'MLN/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into mln_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'REP/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into rep_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    MLN/BTC     //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'MLN/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into mln_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // /////////////////////
 // // // //    BCY/BTC     //
 // // // /////////////////////
@@ -5248,7 +5377,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCY/BTC'
 // //         const tickers = {}
@@ -5289,7 +5418,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'RIC/BTC'
 // //         const tickers = {}
@@ -5330,7 +5459,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BTCD/BTC'
 // //         const tickers = {}
@@ -5371,7 +5500,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'FLO/BTC'
 // //         const tickers = {}
@@ -5412,7 +5541,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LTC/XMR'
 // //         const tickers = {}
@@ -5452,7 +5581,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XVC/BTC'
 // //         const tickers = {}
@@ -5493,7 +5622,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'PINK/BTC'
 // //         const tickers = {}
@@ -5534,7 +5663,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'CVC/ETH'
 // //         const tickers = {}
@@ -5575,7 +5704,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BTM/BTC'
 // //         const tickers = {}
@@ -5616,7 +5745,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XBC/BTC'
 // //         const tickers = {}
@@ -5657,7 +5786,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'HUC/BTC'
 // //         const tickers = {}
@@ -5698,7 +5827,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NMC/BTC'
 // //         const tickers = {}
@@ -5739,7 +5868,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NXT/XMR'
 // //         const tickers = {}
@@ -5780,7 +5909,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZEC/XMR'
 // //         const tickers = {}
@@ -5815,218 +5944,218 @@
 // // }
 // // // /////////////////////
 // // // //    GNO/ETH    //
-// // // /////////////////////
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'GNO/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into gno_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    ETH/CAD    //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETH/CAD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eth_cad' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    BTC/JPY    //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'BTC/JPY'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into btc_jpy' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    MLN/ETH    //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'MLN/ETH'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into mln_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    ETH/JPY    //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETH/JPY'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eth_jpy' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // /////////////////////
+// // // // //    BTC/GBP    //
+// // // // /////////////////////
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'GNO/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into gno_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    ETH/CAD    //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETH/CAD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eth_cad' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    BTC/JPY    //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'BTC/JPY'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into btc_jpy' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    MLN/ETH    //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'MLN/ETH'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into mln_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    ETH/JPY    //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETH/JPY'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eth_jpy' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    BTC/GBP    //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'BTC/GBP'
 //         const tickers = {}
@@ -6059,15 +6188,15 @@
 //         }
 //     }, 5000);
 // }
-// // // /////////////////////
-// // // //    ETH/GBP    //
-// // // /////////////////////
+// // // // /////////////////////
+// // // // //    ETH/GBP    //
+// // // // /////////////////////
 // {
 //     let dat = {};
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'ETH/GBP'
 //         const tickers = {}
@@ -6100,6 +6229,47 @@
 //         }
 //     }, 5000);
 // }
+// // // // /////////////////////
+// // // // //    BTC/RUB    //
+// // // // /////////////////////
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BTC/RUB'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into btc_rub' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // // // /////////////////////
 // // // //    DASH/XMR    //
 // // // /////////////////////
@@ -6108,7 +6278,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DASH/XMR'
 // //         const tickers = {}
@@ -6149,7 +6319,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'MAID/XMR'
 // //         const tickers = {}
@@ -6190,7 +6360,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BLK/XMR'
 // //         const tickers = {}
@@ -6231,7 +6401,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCN/XMR'
 // //         const tickers = {}
@@ -6272,7 +6442,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BTCD/XMR'
 // //         const tickers = {}
@@ -6306,46 +6476,46 @@
 // //     }, 5000);
 // // }
 // // // // /////////////////////
-// // // // //    BCH/USDT   //
+// // // // //    BCH/USD   //
 // // // // /////////////////////
-// // {
-// //     let dat = {};
-// //     "use strict";
-// //     (async () => {
-// //         const exchanges = [
-// //             'kraken'
-// //         ]
-// //         const symbol = 'BCH/USDT'
-// //         const tickers = {}
-// //         await Promise.all(exchanges.map(exchangeId =>
-// //             new Promise(async (resolve, reject) => {
-// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-// //                 while (true) {
-// //                     const ticker = await exchange.fetchTicker(symbol)
-// //                     tickers[exchangeId] = ticker;
-// //                     Object.keys(tickers).map(exchangeId => {
-// //                         const ticker = tickers[exchangeId];
-// //                         dat = ticker;
-// //                         dat.ex_name = exchangeId;
-// //                     })
-// //                 }
-// //             })
-// //         ))
-// //     })();
-// //     setInterval(function () {
-// //         if (dat.symbol !== undefined) {
-// //             let timeUnix = unixTime(dat.datetime);
-// //             let values = [
-// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-// //             ];
-// //             let sql = format('insert into bch_usdt' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-// //                 'ex_name, last, average, date )' + 'values %L', values);
-// //             db.query(sql, function (err, result) {
-// //                 if (err) throw err;
-// //             });
-// //         }
-// //     }, 5000);
-// // }
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'cex'
+//         ]
+//         const symbol = 'BCH/USD'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bch_usd' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // // // // /////////////////////
 // // // // //    NXT/BTC   //
 // // // // /////////////////////
@@ -6354,7 +6524,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NXT/BTC'
 // //         const tickers = {}
@@ -6390,126 +6560,126 @@
 // // // // /////////////////////
 // // // // //    DOGE/BTC   //
 // // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'DOGE/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into doge_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'DOGE/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into doge_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // // // /////////////////////
+// // // // // //    ETH/GNO   //
+// // // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'ETH/GNO'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into eth_gno' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // // /////////////////////
-// // // // //    ETH/GNO   //
+// // // // //    BCH/BTC     //
 // // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'ETH/GNO'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into eth_gno' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // // /////////////////////
-// // // //    BCH/BTC     //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'BCH/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into bch_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'BCH/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into bch_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // // /////////////////////
 // // // //    SC/BTC	    //
 // // // /////////////////////
@@ -6518,7 +6688,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SC/BTC'
 // //         const tickers = {}
@@ -6559,7 +6729,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XEM/BTC'
 // //         const tickers = {}
@@ -6600,7 +6770,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BCH/ETH'
 // //         const tickers = {}
@@ -6642,7 +6812,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'POT/BTC'
 // //         const tickers = {}
@@ -6684,7 +6854,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'MAID/BTC'
 // //         const tickers = {}
@@ -6726,7 +6896,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BLK/BTC'
 // //         const tickers = {}
@@ -6768,7 +6938,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'PASC/BTC'
 // //         const tickers = {}
@@ -6810,7 +6980,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NAV/BTC'
 // //         const tickers = {}
@@ -6852,7 +7022,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'STORJ/BTC'
 // //         const tickers = {}
@@ -6894,7 +7064,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GAME/BTC'
 // //         const tickers = {}
@@ -6936,7 +7106,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EXP/BTC'
 // //         const tickers = {}
@@ -6978,7 +7148,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LBC/BTC'
 // //         const tickers = {}
@@ -7020,7 +7190,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZRX/BTC'
 // //         const tickers = {}
@@ -7062,7 +7232,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'AMP/BTC'
 // //         const tickers = {}
@@ -7104,7 +7274,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'DCR/BTC'
 // //         const tickers = {}
@@ -7146,7 +7316,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'REP/USDT'
 // //         const tickers = {}
@@ -7187,7 +7357,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'OMNI/BTC'
 // //         const tickers = {}
@@ -7228,7 +7398,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'RADS/BTC'
 // //         const tickers = {}
@@ -7269,7 +7439,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'CLAM/BTC'
 // //         const tickers = {}
@@ -7310,7 +7480,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GRC/BTC'
 // //         const tickers = {}
@@ -7351,7 +7521,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'FLDC/BTC'
 // //         const tickers = {}
@@ -7387,85 +7557,85 @@
 // // //////////////////////
 // // // //  GNO/BTC     //
 // // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'GNO/BTC'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into gno_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
-// // //////////////////////
-// // // //  BTC/CAD     //
-// // // /////////////////////
-// {
-//     let dat = {};
-//     "use strict";
-//     (async () => {
-//         const exchanges = [
-//             'kraken'
-//         ]
-//         const symbol = 'BTC/CAD'
-//         const tickers = {}
-//         await Promise.all(exchanges.map(exchangeId =>
-//             new Promise(async (resolve, reject) => {
-//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-//                 while (true) {
-//                     const ticker = await exchange.fetchTicker(symbol)
-//                     tickers[exchangeId] = ticker;
-//                     Object.keys(tickers).map(exchangeId => {
-//                         const ticker = tickers[exchangeId];
-//                         dat = ticker;
-//                         dat.ex_name = exchangeId;
-//                     })
-//                 }
-//             })
-//         ))
-//     })();
-//     setInterval(function () {
-//         if (dat.symbol !== undefined) {
-//             let timeUnix = unixTime(dat.datetime);
-//             let values = [
-//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-//             ];
-//             let sql = format('insert into btc_cad' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-//                 'ex_name, last, average, date )' + 'values %L', values);
-//             db.query(sql, function (err, result) {
-//                 if (err) throw err;
-//             });
-//         }
-//     }, 5000);
-// }
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'GNO/BTC'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into gno_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
+// // // //////////////////////
+// // // // //  BTC/CAD     //
+// // // // /////////////////////
+// // {
+// //     let dat = {};
+// //     "use strict";
+// //     (async () => {
+// //         const exchanges = [
+// //             'cex'
+// //         ]
+// //         const symbol = 'BTC/CAD'
+// //         const tickers = {}
+// //         await Promise.all(exchanges.map(exchangeId =>
+// //             new Promise(async (resolve, reject) => {
+// //                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+// //                 while (true) {
+// //                     const ticker = await exchange.fetchTicker(symbol)
+// //                     tickers[exchangeId] = ticker;
+// //                     Object.keys(tickers).map(exchangeId => {
+// //                         const ticker = tickers[exchangeId];
+// //                         dat = ticker;
+// //                         dat.ex_name = exchangeId;
+// //                     })
+// //                 }
+// //             })
+// //         ))
+// //     })();
+// //     setInterval(function () {
+// //         if (dat.symbol !== undefined) {
+// //             let timeUnix = unixTime(dat.datetime);
+// //             let values = [
+// //                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+// //             ];
+// //             let sql = format('insert into btc_cad' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+// //                 'ex_name, last, average, date )' + 'values %L', values);
+// //             db.query(sql, function (err, result) {
+// //                 if (err) throw err;
+// //             });
+// //         }
+// //     }, 5000);
+// // }
 // // //////////////////////
 // // // //  XPM/BTC     //
 // // // /////////////////////
@@ -7474,7 +7644,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XPM/BTC'
 // //         const tickers = {}
@@ -7515,7 +7685,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'NXC/BTC'
 // //         const tickers = {}
@@ -7556,7 +7726,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GAS/BTC'
 // //         const tickers = {}
@@ -7597,7 +7767,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'VRC/BTC'
 // //         const tickers = {}
@@ -7638,7 +7808,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZEC/ETH'
 // //         const tickers = {}
@@ -7679,7 +7849,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'VIA/ETH'
 // //         const tickers = {}
@@ -7720,7 +7890,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'ZRX/ETH'
 // //         const tickers = {}
@@ -7761,7 +7931,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'LSK/ETH'
 // //         const tickers = {}
@@ -7803,7 +7973,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GNT/BTC'
 // //         const tickers = {}
@@ -7844,7 +8014,7 @@
 //     "use strict";
 //     (async () => {
 //         const exchanges = [
-//             'kraken'
+//             'cex'
 //         ]
 //         const symbol = 'DASH/USD'
 //         const tickers = {}
@@ -7885,7 +8055,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'SYS/BTC'
 // //         const tickers = {}
@@ -7926,7 +8096,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'CVC/BTC'
 // //         const tickers = {}
@@ -7967,7 +8137,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'STEEM/BTC'
 // //         const tickers = {}
@@ -8008,7 +8178,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'EMC2/BTC'
 // //         const tickers = {}
@@ -8049,7 +8219,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'GNT/ETH'
 // //         const tickers = {}
@@ -8090,7 +8260,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'BELA/BTC'
 // //         const tickers = {}
@@ -8131,7 +8301,7 @@
 // //     "use strict";
 // //     (async () => {
 // //         const exchanges = [
-// //             'kraken'
+// //             'cex'
 // //         ]
 // //         const symbol = 'XCP/BTC'
 // //         const tickers = {}
