@@ -3,7 +3,7 @@ var router = express.Router();
 var db = require('./queries');
 var db2 = require('./queries');
 var bitfinex = require('./bitfinex_query.js');
-
+var poloniex = require('./poloniex_query.js');
 var convert = require('object-array-converter');
 
 
