@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var db = require('./queries');
-var db2 = require('./queries');
-var bitfinex = require('./bitfinex_query.js');
-var poloniex = require('./poloniex_query.js');
-var kraken = require('./kraken_query.js');
-var cex = require('./cex_query.js');
-var convert = require('object-array-converter');
+const express = require('express');
+const router = express.Router();
+const db = require('./queries');
+const db2 = require('./queries');
+const bitfinex = require('./bitfinex_query.js');
+const poloniex = require('./poloniex_query.js');
+const kraken = require('./kraken_query.js');
+const cex = require('./cex_query.js');
+const bittrex = require('./bittrex_query.js');
+const hitbtc = require('./hitbtc_query.js');
+const convert = require('object-array-converter');
 
 
 
