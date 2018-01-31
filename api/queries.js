@@ -66,7 +66,7 @@ const database = mysql.createConnection({
 //       const exchange = new ccxt[a]({ enableRateLimit: true })
 //       while (true) {
 //         const ticker = await exchange.fetchTicker(symbol)
-//         tickers[exchangeId] = ticker;
+ //       tickers[exchangeId] = ticker;
 //         Object.keys(tickers).map(a => {
 //           const ticker = tickers[a];
 //           dat_bittrex = tickers.bittrex;

@@ -459,88 +459,88 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // // // //       BCC/BTC  //
 // // // ///////////////////////
 
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'BCC/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into bcc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'BCC/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bcc_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 
 
 
 ///////////////////////
 //      BCC/USDT   //
 ///////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'BCC/USDT'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into bcc_usdt' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'BCC/USDT'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bcc_usdt' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 
 
 
@@ -752,44 +752,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 /////////////////////
 //    XDN/ETH     //
 /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'XDN/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into xdn_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'XDN/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into xdn_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 /////////////////
 //   PTOY/BTC //
 /////////////////
@@ -798,7 +798,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'PTOY/BTC'
         const tickers = {}
@@ -875,44 +875,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 }
 //   XAUR/BTC //
 /////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'XAUR/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into xaur_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'XAUR/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into xaur_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 
 
 // // // ///////////////////
@@ -2435,44 +2435,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // //       MTL/BTC   //
 // ///////////////////////
 
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'MTL/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into mtl_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'MTL/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into mtl_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // ///////////////////////
 // //       NEOS/BTC   //
 // ///////////////////////
@@ -3067,44 +3067,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // // //       TRIG/BTC  //
 // // ///////////////////////
 
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'TRIG/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into trig_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'TRIG/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into trig_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // // ///////////////////////
 // // //       MCO/BTC  //
 // // ///////////////////////
@@ -3238,7 +3238,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'AEON/BTC'
         const tickers = {}
@@ -3279,7 +3279,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'PART/BTC'
         const tickers = {}
@@ -3692,7 +3692,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'KORE/BTC'
         const tickers = {}
@@ -3817,7 +3817,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'SIB/BTC'
         const tickers = {}
@@ -3858,7 +3858,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'DGB/ETH'
         const tickers = {}
@@ -4756,44 +4756,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // /////////////////////
 // //    BTCD/BTC     //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'BTCD/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into btcd_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'BTCD/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into btcd_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // /////////////////////
 // //    BAT/ETH     //
 // /////////////////////
@@ -5290,44 +5290,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // // // //       MYST/ETH  //
 // // // ///////////////////////
 
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'MYST/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into myst_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'MYST/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into myst_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 //////////////////////
 // //  BRX/BTC     //
 // /////////////////////
@@ -5583,44 +5583,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // // //      APX/BTC  //
 // // ///////////////////////
 
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'APX/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into apx_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'APX/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into apx_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // // ///////////////////////
 // // //       RLC/ETH  //
 // // ///////////////////////
@@ -6081,44 +6081,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 //////////////////////
 // //  DGD/ETH   //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'DGD/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into dgd_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'DGD/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into dgd_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 //////////////////////
 // //  CFI/ETH   //
 // /////////////////////
@@ -6163,44 +6163,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 //////////////////////
 // //  MTL/ETH   //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'MTL/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into mtl_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'MTL/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into mtl_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 //////////////////////
 // //  EFL/BTC    //
 // /////////////////////
@@ -7427,6 +7427,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
         ))
     })();
     setInterval(function () {
+
         if (dat.symbol !== undefined) {
             let timeUnix = unixTime(dat.datetime);
             let values = [
@@ -7525,44 +7526,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 /////////////////
 //   MYST/BTC//
 /////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'MYST/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into myst_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'MYST/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into myst_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 /////////////////
 //   GCR/BTC//
 /////////////////
@@ -7986,44 +7987,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // /////////////////////
 // //    BCC/ETH     //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'BCC/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into bcc_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'BCC/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into bcc_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // /////////////////////
 // //    SLR/BTC     //
 // /////////////////////
@@ -8827,7 +8828,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'DASH/USDT'
         const tickers = {}
@@ -8868,7 +8869,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
     "use strict";
     (async () => {
         const exchanges = [
-            'hitbtc'
+            'bittrex'
         ]
         const symbol = 'VIA/BTC'
         const tickers = {}
@@ -9052,6 +9053,7 @@ const ccxt = require('./ccxt-master/ccxt.js');
         ))
     })();
     setInterval(function () {
+
         if (dat.symbol !== undefined) {
             let timeUnix = unixTime(dat.datetime);
             let values = [
@@ -9725,44 +9727,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 // /////////////////////
 // //   DGD/BTC    //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'bittrex'
-        ]
-        const symbol = 'DGD/BTC'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into dgd_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'bittrex'
+//         ]
+//         const symbol = 'DGD/BTC'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into dgd_btc' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 // /////////////////////
 // //   SYNX/BTC    //
 // /////////////////////

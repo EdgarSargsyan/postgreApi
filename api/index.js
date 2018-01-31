@@ -8,6 +8,7 @@ const kraken = require('./kraken_query.js');
 const cex = require('./cex_query.js');
 const bittrex = require('./bittrex_query.js');
 const hitbtc = require('./hitbtc_query.js');
+const one = require('./1.js');
 const convert = require('object-array-converter');
 
 

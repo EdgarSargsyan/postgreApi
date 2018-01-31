@@ -47,7 +47,6 @@ const ccxt = require('./ccxt-master/ccxt.js');
 //                         Object.keys(tickers).map(exchangeId => {
 //                         dat.i = ticker;
 //                         dat.ex_name = exchangeId;
-//                         console.log(tickers);
 //                     })
 //                     }
 //                 }
@@ -3577,44 +3576,44 @@ const ccxt = require('./ccxt-master/ccxt.js');
 //////////////////////
 // //  VIA/ETH     //
 // /////////////////////
-{
-    let dat = {};
-    "use strict";
-    (async () => {
-        const exchanges = [
-            'poloniex'
-        ]
-        const symbol = 'VIA/ETH'
-        const tickers = {}
-        await Promise.all(exchanges.map(exchangeId =>
-            new Promise(async (resolve, reject) => {
-                const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
-                while (true) {
-                    const ticker = await exchange.fetchTicker(symbol)
-                    tickers[exchangeId] = ticker;
-                    Object.keys(tickers).map(exchangeId => {
-                        const ticker = tickers[exchangeId];
-                        dat = ticker;
-                        dat.ex_name = exchangeId;
-                    })
-                }
-            })
-        ))
-    })();
-    setInterval(function () {
-        if (dat.symbol !== undefined) {
-            let timeUnix = unixTime(dat.datetime);
-            let values = [
-                [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
-            ];
-            let sql = format('insert into via_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
-                'ex_name, last, average, date )' + 'values %L', values);
-            db.query(sql, function (err, result) {
-                if (err) throw err;
-            });
-        }
-    }, 5000);
-}
+// {
+//     let dat = {};
+//     "use strict";
+//     (async () => {
+//         const exchanges = [
+//             'poloniex'
+//         ]
+//         const symbol = 'VIA/ETH'
+//         const tickers = {}
+//         await Promise.all(exchanges.map(exchangeId =>
+//             new Promise(async (resolve, reject) => {
+//                 const exchange = new ccxt[exchangeId]({ enableRateLimit: true })
+//                 while (true) {
+//                     const ticker = await exchange.fetchTicker(symbol)
+//                     tickers[exchangeId] = ticker;
+//                     Object.keys(tickers).map(exchangeId => {
+//                         const ticker = tickers[exchangeId];
+//                         dat = ticker;
+//                         dat.ex_name = exchangeId;
+//                     })
+//                 }
+//             })
+//         ))
+//     })();
+//     setInterval(function () {
+//         if (dat.symbol !== undefined) {
+//             let timeUnix = unixTime(dat.datetime);
+//             let values = [
+//                 [dat.symbol, dat.high, dat.low, dat.bid, dat.ask, dat.baseVolume, timeUnix, dat.ex_name, dat.last, dat.average, dat.datetime]
+//             ];
+//             let sql = format('insert into via_eth' + '(symbol, high, low, bid, ask, base_volume, time_stamp,' +
+//                 'ex_name, last, average, date )' + 'values %L', values);
+//             db.query(sql, function (err, result) {
+//                 if (err) throw err;
+//             });
+//         }
+//     }, 5000);
+// }
 //////////////////////
 // //  ZRX/ETH     //
 // /////////////////////
