@@ -2,13 +2,24 @@ const express = require('express');
 const router = express.Router();
 const db = require('./queries');
 const db2 = require('./queries');
-const bitfinex = require('./bitfinex_query.js');
-const poloniex = require('./poloniex_query.js');
-const kraken = require('./kraken_query.js');
-const cex = require('./cex_query.js');
-const bittrex = require('./bittrex_query.js');
-const hitbtc = require('./hitbtc_query.js');
-const one = require('./1.js');
+//const bitfinex = require('./bitfinex_query.js');
+//const poloniex = require('./poloniex_query.js');
+//const kraken = require('./kraken_query.js');
+//const cex = require('./cex_query.js');
+//const bittrex = require('./bittrex_query.js');
+//const hitbtc = require('./hitbtc_query.js');
+
+
+
+
+const bithumb = require('./bithumb_query.js');
+
+
+
+//const binance = require('./binance_query.js');
+//const bitstamp = require('./bitstamp_query.js');
+
+//const one = require('./1.js');
 const convert = require('object-array-converter');
 
 
